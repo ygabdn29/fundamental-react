@@ -11,6 +11,7 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
+    e.preventDefault();
     const formData = {
       name: name,
       email: email,
@@ -28,8 +29,19 @@ function RegisterForm() {
       },
       body: JSON.stringify(formData),
     })
-      .then((response) => response.json())
-      .then((data) => {})
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setName("");
+        setEmail("");
+        setBirthDate("");
+        setAddress("");
+        setPhone("");
+        setUsername("");
+        setPassword("");
+        alert(data.message);
+      })
       .catch((error) => alert("Error: " + error));
   }
 
