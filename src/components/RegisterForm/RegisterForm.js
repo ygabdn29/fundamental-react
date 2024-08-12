@@ -53,6 +53,7 @@ function RegisterForm() {
           onChange={(e) => {
             setName(e.target.value);
           }}
+          required
         />
       </div>
 
@@ -67,6 +68,7 @@ function RegisterForm() {
           className="form-control"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
       </div>
 
@@ -81,6 +83,7 @@ function RegisterForm() {
           className="form-control"
           value={birthDate}
           onChange={(e) => setBirthDate(e.target.value)}
+          required
         />
       </div>
 
@@ -95,6 +98,7 @@ function RegisterForm() {
           className="form-control"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          required
         />
       </div>
 
@@ -109,6 +113,7 @@ function RegisterForm() {
           className="form-control"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
+          required
         />
       </div>
 
@@ -123,12 +128,13 @@ function RegisterForm() {
           className="form-control"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
       </div>
 
       <div>
         <label htmlFor="password" className="mb-2">
-          Password:{" "}
+          Password:
         </label>
         <input
           type="password"
@@ -137,6 +143,7 @@ function RegisterForm() {
           className="form-control"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </div>
 
