@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./RegisterFormStyle.css";
 
 function RegisterForm() {
   const [name, setName] = useState("");
@@ -10,45 +9,21 @@ function RegisterForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const formData = {
-      name: name,
-      email: email,
-      birthDate: birthDate,
-      address: address,
-      phone: phone,
-      username: username,
-      password: password,
-    };
-
-    fetch("http://localhost:8080/api/account/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setName("");
-        setEmail("");
-        setBirthDate("");
-        setAddress("");
-        setPhone("");
-        setUsername("");
-        setPassword("");
-        alert(data.message);
-      })
-      .catch((error) => alert("Error: " + error));
-  }
-
   return (
     <form
       className="container d-flex flex-column gap-3 mt-4"
-      onSubmit={handleSubmit}
+      onSubmit={(e) =>
+        handleSubmit(
+          e,
+          name,
+          email,
+          birthDate,
+          address,
+          phone,
+          username,
+          password
+        )
+      }
     >
       <h3>Register New User</h3>
 
@@ -166,4 +141,41 @@ function RegisterForm() {
   );
 }
 
+function handleSubmit(
+  e,
+  name,
+  email,
+  birthDate,
+  address,
+  phone,
+  username,
+  password
+) {
+  e.preventDefault();
+  const formData = {
+    name: name,
+    email: email,
+    birthDate: birthDate,
+    address: address,
+    phone: phone,
+    username: username,
+    password: password,
+  };
+
+  fetch("http://localhost:8080/api/account/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      // next mungkin akan jadi redirect
+      alert(data.message);
+    })
+    .catch((error) => alert("Error: " + error));
+}
 export default RegisterForm;

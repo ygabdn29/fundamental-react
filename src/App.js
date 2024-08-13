@@ -1,6 +1,6 @@
 import "./App.css";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
-import VerifyEmail from "./components/VerifyEmail/VerifyEmail";
+import RegisterForm from "./components/RegisterForm/Index";
+import VerifyEmail from "./components/VerifyEmail/Index";
 
 function App() {
   const pathName = window.location.pathname;
