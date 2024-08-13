@@ -1,7 +1,10 @@
 import "./App.css";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
+import VerifyEmail from "./components/VerifyEmail/VerifyEmail";
 
 function App() {
+  const pathName = window.location.pathname;
+
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -18,7 +21,8 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <RegisterForm></RegisterForm>
+      {pathName.includes("/verify/") && <VerifyEmail></VerifyEmail>}
+      {pathName === "/register" && <RegisterForm></RegisterForm>}
     </div>
   );
 }
